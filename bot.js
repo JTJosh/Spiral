@@ -21,8 +21,12 @@ client.on('message', msg => {
   if (msg.content === prefix + 'ArX')
     channel.send('Feel the power of the almighty ban hammer!');
     else
-  if (msg.content === prefix + 'hi') 
-    msg.channel.send('Hoi!');
+  if (msg.content === prefix + 'hi')
+    channel.send('Hoi!');
+    else
+  if (msg.content === prefix + 'Xena-Corrupt')
+    channel.send('You may fall from the sky, you may fall from a tree. But the best way to fall, is in love with me. <3');
+    }
 });
 
 client.login(process.env.TOKEN);
