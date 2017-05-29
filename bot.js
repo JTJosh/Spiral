@@ -25,7 +25,7 @@ client.on('message', msg => {
     channel.send('Hoi!');
     else
   if (msg.content === prefix + 'XenaCorrupt')
-    channel.reply('You may fall from the sky, you may fall from a tree. But the best way to fall, is in love with me. <3');
+    channel.send('You may fall from the sky, you may fall from a tree. But the best way to fall, is in love with me. <3');
     }
 });
 
