@@ -20,6 +20,9 @@ client.on('message', msg => {
   else
   if (msg.content === prefix + 'ArX')
     channel.send('Feel the power of the almighty ban hammer!');
+    else
+  if (msg.content === prefix + 'hi') //
+    msg.channel.send('Hoi!');
 });
 
 client.login(process.env.TOKEN);
