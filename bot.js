@@ -7,27 +7,17 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content === prefix + 'Sinbadx') {
+  if (msg.content === prefix + 'Sinbadx')
     msg.channel.sendMessage('The one, the only!');
-  }
-});
-
-client.on('message', msg => {
-  if (msg.content === prefix + 'Xena') {
+  else
+  if (msg.content === prefix + 'Xena')
     msg.channel.sendMessage('Do not touch my master!');
-  }
-});
-
-client.on('message', msg => {
-  if (msg.content === prefix + 'Pixel') {
+  else
+  if (msg.content === prefix + 'Pixel')
     msg.channel.sendMessage('Pixelate that. - Pixel, 2k17');
-  }
-});
-
-client.on('message', msg => {
-  if (msg.content === prefix + 'ArX') {
+  else
+  if (msg.content === prefix + 'ArX')
     msg.channel.sendMessage('Feel the power of the almighty ban hammer!');
-  }
 });
 
 client.login(process.env.TOKEN);
