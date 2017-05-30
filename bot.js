@@ -4,7 +4,7 @@ const prefix = ">"
 
 const JOSH = "292971521159200768";
 const WILLY = "259209114268336129";
-
+client.on("debug", console.log);
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.username}!`);
 });
@@ -33,7 +33,7 @@ client.on('message', msg => {
       msg.delete();
     }
   }
-  
+
   else if (msg.content === prefix + 'XenaCorrupt')
     channel.send('You may fall from the sky, you may fall from a tree. But the best way to fall, is in love with me. <3');
 });
