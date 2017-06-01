@@ -36,8 +36,8 @@ client.on('message', msg => {
   else if (msg.content === prefix + 'Willy')
     msg.channel.send('Co-owner of Donuts. Special thanks.');
 
-else if (msg.content === '+warm')
-    msg.channel.send('Looks like someone is getting warmed again.');
+else if (msg.content.startsWith(prefix + 'warm'))
+    msg.channel.send('Looks like someone is getting warmed again. -.- *Warms*');
 
 
   else if(msg.content.startsWith(prefix + 's')){
