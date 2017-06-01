@@ -22,7 +22,7 @@ client.on('message', msg => {
     channel.send('Pixelate that. - Pixel, 2k17');
 
   else if (msg.content === prefix + 'ArX')
-    channel.send('Feel the power of the almighty ban hammer!');
+    channel.send('Run for your lives!! ArX will kill us all!');
 
   else if (msg.content === prefix + 'hi')
     msg.channel.send('Hoi!');
@@ -32,6 +32,13 @@ client.on('message', msg => {
 
   else if (msg.content === prefix + 'Umi')
     msg.channel.send('Credits go to my teacher, Umi.');
+  
+  else if (msg.content === prefix + 'Willy')
+    msg.channel.send('Co-owner of Donuts. Special thanks.');
+
+else if (msg.content === '+warm')
+    msg.channel.send('Looks like someone is getting warmed again.');
+
 
   else if(msg.content.startsWith(prefix + 's')){
     if(msg.author.id == JOSH || msg.author.id == WILLY){
