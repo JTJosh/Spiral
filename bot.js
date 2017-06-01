@@ -30,6 +30,9 @@ client.on('message', msg => {
   else if (msg.content === prefix + 'Dreams')
     msg.channel.send('Dreams will come true, just wait and see.');
 
+  else if (msg.content === prefix + 'Umi')
+    msg.channel.send('Credits go to my teacher, Umi.');
+
   else if(msg.content.startsWith(prefix + 's')){
     if(msg.author.id == JOSH || msg.author.id == WILLY){
       channel.send(msg.content.split(' ').slice(1).join(' '));
