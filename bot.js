@@ -42,6 +42,8 @@ client.on('message', msg => {
   else if (msg.content.startsWith(prefix + 'Abooses'))
     msg.channel.send('*Abooses*');
 
+  else if (msg.content === prefix + 'EmbedMagic')
+    msg.channel.send('If you want embed magic without selfbot Download the app here: https://gitlab.com/garantiertnicht/DiscordEmbed/tags/0.5.2-rc  Make sure you have Java, if you have not, download here: www.java.com  Insert your credentials (Username and Password). Do not put in your token, only username and password. Have fun with the embeds ;)');
 
   else if(msg.content.startsWith(prefix + 's')){
     if(msg.author.id == JOSH || msg.author.id == WILLY){
