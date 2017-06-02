@@ -15,16 +15,22 @@ client.on('message', msg => {
   if (msg.content === prefix + 'Sinbadx')
     channel.send('The one, the only!');
 
+  else if (msg.content === prefix + 'MeaningOfLife')
+    msg.reply('**42.**')
+
   else if (msg.content === prefix + 'Xena')
     channel.send('Do not touch my master!');
 
   else if (msg.content === prefix + 'Pixel')
     channel.send('Pixelate that. - Pixel, 2k17');
 
+  else if (msg.content === prefix + 'Trig')
+    channel.send('**TRIGGERED!**');
+
   else if (msg.content === prefix + 'ArX')
     channel.send('Run for your lives!! ArX will kill us all!');
 
-  else if (msg.content === prefix + 'hi')
+  else if (msg.content === prefix + 'Hi')
     msg.channel.send('Hoi!');
 
   else if (msg.content === prefix + 'Dreams')
@@ -32,18 +38,21 @@ client.on('message', msg => {
 
   else if (msg.content === prefix + 'Umi')
     msg.channel.send('Credits go to my teacher, Umi.');
-  
+
   else if (msg.content === prefix + 'Willy')
     msg.channel.send('Co-owner of Donuts. Special thanks.');
 
-  else if (msg.content.startsWith(prefix + 'warm'))
+  else if (msg.content === prefix + 'Embeds')
+      msg.channel.send('If you want embed magic without selfbot Download the app here: https://gitlab.com/garantiertnicht/DiscordEmbed/tags/0.5.2-rc  Make sure you have Java, if you have not, download here: www.java.com  Insert your credentials (Username and Password). Do not put in your token, only username and password. Have fun with the embeds ;)');
+
+  else if (msg.content.startsWith(prefix + 'Warm'))
     msg.channel.send('Looks like someone is getting warmed again. -.- *Warms*');
 
   else if (msg.content.startsWith(prefix + 'Abooses'))
     msg.channel.send('*Abooses*');
-
-  else if (msg.content === prefix + 'EmbedMagic')
-    msg.channel.send('If you want embed magic without selfbot Download the app here: https://gitlab.com/garantiertnicht/DiscordEmbed/tags/0.5.2-rc  Make sure you have Java, if you have not, download here: www.java.com  Insert your credentials (Username and Password). Do not put in your token, only username and password. Have fun with the embeds ;)');
+  
+  else if (msg.content.startsWith(prefix + 'help'))
+	msg.channel.send ('Xena                                                                                                    ArX                                                                                                    Sinbadx                                                                                                    Trig                                                                                                    MeaningOfLife                                                                                                    Umi                                                                                                    Willy                                                                                                    Embeds                                                                                                    Dreams                                                                                                    Hi                                                                                                    Warm                                                                                                    Pixel                                                                                                    Abooses');
 
   else if(msg.content.startsWith(prefix + 's')){
     if(msg.author.id == JOSH || msg.author.id == WILLY){
