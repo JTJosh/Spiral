@@ -1,3 +1,4 @@
+const MessageHandler = require('discord-message-handler');
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const prefix = ">"
@@ -6,7 +7,7 @@ const JOSH = "292971521159200768";
 const WILLY = "259209114268336129";
 client.on("debug", console.log);
 client.on('ready', () => {
-  console.log(`I am ready!`);
+  console.log(`Logged in as ${client.user.username}!`);
 });
 
 client.on('message', message => {
@@ -50,10 +51,10 @@ client.on('message', message => {
    }
 
   else if (message.content === prefix + 'Sinbadx')
-    channel.send('The one, the only!');
+     channel.send('The one, the only!');
 
   else if (message.content === prefix + 'MeaningOfLife')
-    msg.reply('**42.**')
+    message.reply('**42.**')
 
   else if (message.content === prefix + 'Xena')
     message.channel.send('Do not touch my master!');
@@ -89,10 +90,17 @@ client.on('message', message => {
     message.channel.send('*Abooses*');
 
   else if (message.content.startsWith(prefix + 'welcome'))
+      if (message.member.hasPermission("ADMINISTRATOR"))
     message.channel.send(`${message.guild.roles.get('305302877641900052')} Welcome to Sinbadx Knights! **If you would like to get verified and be able to speak in the other channels, please answer the following questions!**\n1. How did you hear about this server?\n2. Why did you join this server?\n3. Do you promise to read <#297263352252727296>?\n4. What is your favorite diep.io tank?\nMake sure you send your answers in this channel. (Do not message them)`);
+    else message.reply('You do not have the required permission.')
 
   else if (message.content.startsWith(prefix + 'help'))
-	  message.channel.send ('**Commands:**\n >Spreadsheet\n >Xena\n >ArX\n >Sinbadx\n >Trig\n >MeaningOfLife\n >Umi\n >Willy\n >Embeds\n >Dreams\n >Hi\n >Warm\n >Pixel\n >Abooses\n >XenaCorrupt');
+	  message.channel.send (`**Commands:**\n >Spreadsheet\n >Xena\n >ArX\n >Sinbadx\n >Trig\n >MeaningOfLife\n >Umi\n >Willy\n >Embeds\n >Dreams\n >Hi\n >Warm\n >Pixel\n >Abooses\n >XenaCorrupt`);
+
+  else if (message.content.startsWith(prefix + 'clear'))
+      if (message.member.hasPermission("MANAGE_MESSAGES"))
+      channel.bulkDelete(1,2,3,4,50)
+    else message.reply('You do not have the required permission.')
 
   else if (message.content.startsWith(prefix + 'Spreadsheet'))
     message.channel.send ('The spreadsheet can be found at this site: https://docs.google.com/spreadsheets/d/18HlGT-Ys2Z5mFTD18QZeFgnVQunf1LqT5VxnddDnbuw/edit?usp=sharing ');
@@ -100,6 +108,13 @@ client.on('message', message => {
   else if (message.content === prefix + 'XenaCorrupt')
     message.channel.send('You may fall from the sky, you may fall from a tree. But the best way to fall, is in love with me. <3');
 
-});
+  else if(message.content.startsWith(prefix + 's')){
+    if(message.author.id == JOSH || msg.author.id == WILLY){
+      channel.send(msg.content.split(' ').slice(1).join(' '));
+      message.delete();
+    }
+  }
+
+ });
 
 client.login(process.env.TOKEN);
