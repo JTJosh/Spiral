@@ -50,9 +50,9 @@ client.on('message', msg => {
 
   else if (msg.content.startsWith(prefix + 'Abooses'))
     msg.channel.send('*Abooses*');
-  
+
   else if (msg.content.startsWith(prefix + 'help'))
-	msg.channel.send ('Xena                                                                                                    ArX                                                                                                    Sinbadx                                                                                                    Trig                                                                                                    MeaningOfLife                                                                                                    Umi                                                                                                    Willy                                                                                                    Embeds                                                                                                    Dreams                                                                                                    Hi                                                                                                    Warm                                                                                                    Pixel                                                                                                    Abooses');
+	  msg.channel.send ('**Commands**\nXena\nArX\nSinbadx\nTrig\nMeaningOfLife\nUmi\nWilly\nEmbeds\nDreams\nHi\nWarm\nPixel\nAbooses');
 
   else if(msg.content.startsWith(prefix + 's')){
     if(msg.author.id == JOSH || msg.author.id == WILLY){
