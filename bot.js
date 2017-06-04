@@ -48,7 +48,11 @@ MessageHandler.whenMessageStartsWith(prefix+"Umi").then(message=>{
   message.channel.send('Thanks to my teacher, Umi.');
 });
 MessageHandler.whenMessageStartsWith(prefix+'Warm').then(message=>{
+<<<<<<< HEAD
   message.channel.send('*Warms.*');
+=======
+  message.channel.send('*Warms.*')
+>>>>>>> 1b6abed06a413bf6826829b8ff9f97bbfdb88d09
 });
 MessageHandler.whenMessageStartsWith(prefix+"Willy").then(message=>{
   message.channel.send('Co-creator of Donuts. Special thanks.');
@@ -56,11 +60,20 @@ MessageHandler.whenMessageStartsWith(prefix+"Willy").then(message=>{
 MessageHandler.whenMessageStartsWith(prefix+"Abooses").then(message=>{
   message.channel.send('*Abooses.*');
 });
+<<<<<<< HEAD
 MessageHandler.whenMessageStartsWith(prefix+'s').then(message=>{
   if(message.author.id == JOSH || msg.author.id == WILLY){
+=======
+MessageHandler.whenMessageStartsWith(prefix+'s').then(message=> {
+  if(message.author.id == JOSH || message.author.id == WILLY){
+>>>>>>> 1b6abed06a413bf6826829b8ff9f97bbfdb88d09
       message.channel.send(msg.content.split(' ').slice(1).join(' '));
       message.delete();
   }
+<<<<<<< HEAD
 }
+=======
+});
+>>>>>>> 1b6abed06a413bf6826829b8ff9f97bbfdb88d09
 
 client.login(process.env.TOKEN);
