@@ -73,19 +73,23 @@ MessageHandler.whenMessageStartsWith(prefix+'s').then(message=>{
     }
 });
 MessageHandler.whenMessageStartsWith(prefix+'status').then(message=>{
-  let bad = new Discord.RichEmbed();
-  let myavatar = `https://images-ext-1.discordapp.net/.eJwFwW0OwiAMANC7cABavgZdYjxLLUyX6EYA92PGu--9n_q2t5rVa4zaZwDJm85rl71lrlXL_gE-eHDr4Eya0BGhjc4FStFDoMUbEhaPjyRIJTKXYHMwU0Qk0nV73vt6lptFn9T_AohLIRY.DAP1B8BhF5M5YeVpwoK2kW_ov0c`;
-  bad.setColor(message.member&&message.member.displayColor?message.member.displayColor:1290103);
-  bad.setAuthor(client.user.username, client.user.avatarURL);
-  bad.setTitle('Bot Status').setDescription('Working');
-  bad.addField('System Status: ','**__All systems functioning properly__**')
-     .addField('Packet Time: ',`\`${Date.now() - message.createdTimestamp} ms\``)
-     .addField('Uptime: ',`\`${process.uptime()} seconds\``)
-     .addField('Avatar URL: ',`[click](myavatar)`)
-     .addField('Timestamp: ',new Date().toUTCString());
-  bad.setThumbnail(myavatar);
-  bad.setFooter(`Bot status`, myavatar);
+  try{
+    let bad = new Discord.RichEmbed();
+    let myavatar = `https://images-ext-1.discordapp.net/.eJwFwW0OwiAMANC7cABavgZdYjxLLUyX6EYA92PGu--9n_q2t5rVa4zaZwDJm85rl71lrlXL_gE-eHDr4Eya0BGhjc4FStFDoMUbEhaPjyRIJTKXYHMwU0Qk0nV73vt6lptFn9T_AohLIRY.DAP1B8BhF5M5YeVpwoK2kW_ov0c`;
+    bad.setColor(message.member&&message.member.displayColor?message.member.displayColor:1290103);
+    bad.setAuthor(client.user.username, client.user.avatarURL);
+    bad.setTitle('Bot Status').setDescription('Working');
+    bad.addField('System Status: ','**__All systems functioning properly__**')
+       .addField('Packet Time: ',`\`${Date.now() - message.createdTimestamp} ms\``)
+       .addField('Uptime: ',`\`${process.uptime()} seconds\``)
+       .addField('Avatar URL: ',`[click](myavatar)`)
+       .addField('Timestamp: ',new Date().toUTCString());
+    bad.setThumbnail(myavatar);
+    bad.setFooter(`Bot status`, myavatar);
 
-  return message.channel.send(' ',{embed: bad});
-}).catch(err=>console.error);
+    return message.channel.send(' ',{embed: bad});
+  }catch(err){
+    console.error('[CMD][Status]: '+err);
+  }
+});
 client.login(process.env.TOKEN);
