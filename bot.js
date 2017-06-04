@@ -57,7 +57,7 @@ MessageHandler.whenMessageStartsWith(prefix+"Abooses").then(message=>{
   message.channel.send('*Abooses.*');
 });
 MessageHandler.whenMessageStartsWith(prefix+'s').then(message=> {
-  if(message.author.id == JOSH || msg.author.id == WILLY){
+  if(message.author.id == JOSH || message.author.id == WILLY){
       message.channel.send(msg.content.split(' ').slice(1).join(' '));
       message.delete();
     }
