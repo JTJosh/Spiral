@@ -1,7 +1,7 @@
 const MessageHandler = require('discord-message-handler');
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const prefix = ">"
+const prefix = "'"
 
 const JOSH = "292971521159200768";
 const WILLY = "259209114268336129";
@@ -13,10 +13,17 @@ client.on('ready', () => {
 client.on('message', message => {
     if (message.author.bot) return;
     MessageHandler.handleMessage(message);
+    MessageHandler.setCaseSensitive(false);
+});
+MessageHandler.whenMessageStartsWith("{ban").then(message=>{
+  message.reply('User banned succesfully!');
+});
+MessageHandler.whenMessageStartsWith(prefix+"MeaningOfLife").then(message=>{
+  message.reply(' **42!**');
 });
 MessageHandler.whenMessageStartsWith(prefix+"help").then(message=>{
-  message.reply('Commands:\n >Spreadsheet\n >Xena\n >ArX\n >Sinbadx\n >Trig\n >MeaningOfLife'+
-  '\n >Umi\n >Willy\n >Embeds\n >Dreams\n >Hi\n >Warm\n >Pixel\n >Abooses\n >XenaCorrupt');
+  message.reply('**Commands:**\n >Spreadsheet\n >Xena\n >ArX\n >Sinbadx\n >Trig\n >MeaningOfLife'+
+  '\n >Umi\n >Willy\n >Embeds\n >Dreams\n >Warm\n >Pixel\n >Abooses\n >XenaCorrupt');
 });
 MessageHandler.whenMessageStartsWith(prefix+"welcome").then(message=>{
  if(message.member.hasPermission("ADMINISTRATOR"))
@@ -53,15 +60,17 @@ MessageHandler.whenMessageStartsWith(prefix+'Warm').then(message=>{
 MessageHandler.whenMessageStartsWith(prefix+"Willy").then(message=>{
   message.channel.send('Co-creator of Donuts. Special thanks.');
 });
-MessageHandler.whenMessageStartsWith(prefix+"Abooses").then(message=>{
-  message.channel.send('*Abooses.*');
+MessageHandler.whenMessageStartsWith(prefix+"Aboose").then(message=>{
+  message.channel.send('*Aboooooses. Aboose Police on their way. :3*');
 });
-MessageHandler.whenMessageStartsWith(prefix+'s').then(message=> {
+MessageHandler.whenMessageStartsWith(prefix+"Trig").then(message=>{
+  message.channel.send('**TRIGGERED AF!!!**');
+});
+MessageHandler.whenMessageStartsWith(prefix+'s').then(message=>{
   if(message.author.id == JOSH || message.author.id == WILLY){
-      message.channel.send(msg.content.split(' ').slice(1).join(' '));
+      message.channel.send(message.content.split(' ').slice(1).join(' '));
       message.delete();
     }
-  }
 });
 
 client.login(process.env.TOKEN);
