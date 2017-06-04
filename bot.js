@@ -48,19 +48,19 @@ MessageHandler.whenMessageStartsWith(prefix+"Umi").then(message=>{
   message.channel.send('Thanks to my teacher, Umi.');
 });
 MessageHandler.whenMessageStartsWith(prefix+'Warm').then(message=>{
-  message.channel.send('*Warms.*')
-});  
+  message.channel.send('*Warms.*');
+});
 MessageHandler.whenMessageStartsWith(prefix+"Willy").then(message=>{
   message.channel.send('Co-creator of Donuts. Special thanks.');
 });
 MessageHandler.whenMessageStartsWith(prefix+"Abooses").then(message=>{
   message.channel.send('*Abooses.*');
 });
-MessageHandler.whenMessageStartsWith(prefix+'s').then(message=> {
+MessageHandler.whenMessageStartsWith(prefix+'s').then(message=>{
   if(message.author.id == JOSH || msg.author.id == WILLY){
-      channel.send(msg.content.split(' ').slice(1).join(' '));
+      message.channel.send(msg.content.split(' ').slice(1).join(' '));
       message.delete();
-    }
   }
+}
 
 client.login(process.env.TOKEN);
