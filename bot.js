@@ -58,7 +58,7 @@ MessageHandler.whenMessageStartsWith(prefix+"Abooses").then(message=>{
 });
 MessageHandler.whenMessageStartsWith(prefix+'s').then(message=> {
   if(message.author.id == JOSH || msg.author.id == WILLY){
-      channel.send(msg.content.split(' ').slice(1).join(' '));
+      message.channel.send(msg.content.split(' ').slice(1).join(' '));
       message.delete();
     }
   }
