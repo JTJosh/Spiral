@@ -49,7 +49,7 @@ MessageHandler.whenMessageStartsWith(prefix+"Umi").then(message=>{
 });
 MessageHandler.whenMessageStartsWith(prefix+'Warm').then(message=>{
   message.channel.send('*Warms.*')
-});  
+});
 MessageHandler.whenMessageStartsWith(prefix+"Willy").then(message=>{
   message.channel.send('Co-creator of Donuts. Special thanks.');
 });
@@ -62,5 +62,6 @@ MessageHandler.whenMessageStartsWith(prefix+'s').then(message=> {
       message.delete();
     }
   }
+});
 
 client.login(process.env.TOKEN);
