@@ -1,11 +1,14 @@
-global.MessageHandler = require('discord-message-handler');
+global.MessageHandler = require('./discord-message-handler');
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const prefix = "'"
+const prefix = ","
 
 const JOSH = "292971521159200768";
 const WILLY = "259209114268336129";
 client.on("debug", console.log);
+client.on("ready", () => {
+    client.user.setGame(",help");
+});
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.username}!`);
 });
@@ -22,8 +25,8 @@ MessageHandler.whenMessageStartsWith(prefix+"MeaningOfLife").then(message=>{
   message.reply(' **42!**');
 });
 MessageHandler.whenMessageStartsWith(prefix+"help").then(message=>{
-  message.reply('**Commands:**\n >Spreadsheet\n >Xena\n >ArX\n >Sinbadx\n >Trig\n >MeaningOfLife'+
-  '\n >Umi\n >Willy\n >Embeds\n >Dreams\n >Warm\n >Pixel\n >Abooses\n >XenaCorrupt');
+  message.reply('**Commands:**\n ===Global Commands===\n >Status\n >Abooses\n >Trig\n >MeaningOfLife\n >Embeds\n ===Sinbadx Knights===\n >Spreadsheet\n >Xena\n >ArX\n >Sinbadx'+
+  '\n >Umi\n >Willy\n >Dreams\n >Warm\n >Pixel\n >XenaCorrupt\n ===iXPLODE Commands===\n Coming Soon!');
 });
 MessageHandler.whenMessageStartsWith(prefix+"welcome").then(message=>{
  if(message.member.hasPermission("ADMINISTRATOR"))
@@ -66,6 +69,16 @@ MessageHandler.whenMessageStartsWith(prefix+"Aboose").then(message=>{
 MessageHandler.whenMessageStartsWith(prefix+"Trig").then(message=>{
   message.channel.send('**TRIGGERED AF!!!**');
 });
+MessageHandler.whenMessageStartsWith(prefix+"Bam").then(message=>{
+  message.channel.send("*Bams "+message.mentions()+" with their bam hammer!*");
+});
+MessageHandler.whenMessageStartsWith(prefix+"HelpDM").then(message=>{
+  message.author.send('**Commands:**\n ===Global Commands===\n >Status\n >Abooses\n >Trig\n >MeaningOfLife\n >Embeds\n ===Sinbadx Knights===\n >Spreadsheet\n >Xena\n >ArX\n >Sinbadx'+
+  '\n >Umi\n >Willy\n >Dreams\n >Warm\n >Pixel\n >XenaCorrupt\n ===iXPLODE Commands===\n Coming Soon!')
+});
+MessageHandler.whenMessageStartsWith(prefix+"invite").then(message=>{
+  message.channel.send('https://discordapp.com/oauth2/authorize?client_id=318603990273359874&scope=bot&permissions=0');
+});
 MessageHandler.whenMessageStartsWith(prefix+'s').then(message=>{
   if(message.author.id == JOSH || message.author.id == WILLY){
       message.channel.send(message.content.split(' ').slice(1).join(' '));
@@ -80,6 +93,7 @@ MessageHandler.whenMessageStartsWith(prefix+'status').then(message=>{
     bad.setAuthor(client.user.username, client.user.avatarURL);
     bad.setTitle('Bot Status').setDescription('Working');
     bad.addField('System Status: ','**__All systems functioning properly__**')
+    bad.addField('CPU Usage:', `${process.cpuUsage().user}`)
        .addField('Packet Time: ',`\`${Date.now() - message.createdTimestamp} ms\``)
        .addField('Uptime: ',`\`${process.uptime()} seconds\``)
        .addField('Avatar URL: ',`[click](myavatar)`)
