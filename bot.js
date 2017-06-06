@@ -1,13 +1,13 @@
-global.MessageHandler = require('./discord-message-handler');
+global.MessageHandler = require('discord-message-handler');
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const prefix = ","
+const prefix = ">"
 
 const JOSH = "292971521159200768";
 const WILLY = "259209114268336129";
 client.on("debug", console.log);
 client.on("ready", () => {
-    client.user.setGame(",help");
+    client.user.setGame(">help");
 });
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.username}!`);
@@ -25,7 +25,7 @@ MessageHandler.whenMessageStartsWith(prefix+"MeaningOfLife").then(message=>{
   message.reply(' **42!**');
 });
 MessageHandler.whenMessageStartsWith(prefix+"help").then(message=>{
-  message.reply('**Commands:**\n ===Global Commands===\n >Status\n >Abooses\n >Trig\n >MeaningOfLife\n >Embeds\n ===Sinbadx Knights===\n >Spreadsheet\n >Xena\n >ArX\n >Sinbadx'+
+  message.reply('**Commands:**\n ===Global Commands===\n >Fail\n >Status\n >Abooses\n >Trig\n >MeaningOfLife\n >Embeds\n ===Sinbadx Knights===\n >Spreadsheet\n >Xena\n >Sinbadx'+
   '\n >Umi\n >Willy\n >Dreams\n >Warm\n >Pixel\n >XenaCorrupt\n ===iXPLODE Commands===\n Coming Soon!');
 });
 MessageHandler.whenMessageStartsWith(prefix+"welcome").then(message=>{
@@ -35,9 +35,6 @@ MessageHandler.whenMessageStartsWith(prefix+"welcome").then(message=>{
 });
 MessageHandler.whenMessageStartsWith(prefix+"Sinbadx").then(message=>{
   message.channel.send('The one, the only! Sinbadx.');
-});
-MessageHandler.whenMessageStartsWith(prefix+"ArX").then(message=>{
-  message.channel.send('Run for your lives!! ArX will kill us all!!');
 });
 MessageHandler.whenMessageStartsWith(prefix+"Xena").then(message=>{
   message.channel.send('Do not touch my master! *Growls*');
@@ -69,15 +66,18 @@ MessageHandler.whenMessageStartsWith(prefix+"Aboose").then(message=>{
 MessageHandler.whenMessageStartsWith(prefix+"Trig").then(message=>{
   message.channel.send('**TRIGGERED AF!!!**');
 });
+MessageHandler.whenMessageStartsWith(prefix+"invite").then(message=>{
+  message.channel.send('https://discordapp.com/oauth2/authorize?client_id=318603990273359874&scope=bot&permissions=0');
+});
 MessageHandler.whenMessageStartsWith(prefix+"Bam").then(message=>{
   message.channel.send("*Bams "+message.mentions()+" with their bam hammer!*");
 });
-MessageHandler.whenMessageStartsWith(prefix+"HelpDM").then(message=>{
-  message.author.send('**Commands:**\n ===Global Commands===\n >Status\n >Abooses\n >Trig\n >MeaningOfLife\n >Embeds\n ===Sinbadx Knights===\n >Spreadsheet\n >Xena\n >ArX\n >Sinbadx'+
-  '\n >Umi\n >Willy\n >Dreams\n >Warm\n >Pixel\n >XenaCorrupt\n ===iXPLODE Commands===\n Coming Soon!')
+MessageHandler.whenMessageStartsWith(prefix+"Fail").then(message=>{
+  message.channel.send("*YOU Faaaiiiillledddd!*")
 });
-MessageHandler.whenMessageStartsWith(prefix+"invite").then(message=>{
-  message.channel.send('https://discordapp.com/oauth2/authorize?client_id=318603990273359874&scope=bot&permissions=0');
+MessageHandler.whenMessageStartsWith(prefix+"HelpDM").then(message=>{
+  message.author.send('**Commands:**\n ===Global Commands===\n >Fail\n >Status\n >Abooses\n >Trig\n >MeaningOfLife\n >Embeds\n ===Sinbadx Knights===\n >Spreadsheet\n >Xena\n >Sinbadx'+
+  '\n >Umi\n >Willy\n >Dreams\n >Warm\n >Pixel\n >XenaCorrupt\n ===iXPLODE Commands===\n Coming Soon!')
 });
 MessageHandler.whenMessageStartsWith(prefix+'s').then(message=>{
   if(message.author.id == JOSH || message.author.id == WILLY){
