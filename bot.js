@@ -1,4 +1,3 @@
-global.MessageHandler = require('discord-message-handler');
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const prefix = ">"
@@ -14,78 +13,66 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if (message.author.bot) return;
-    MessageHandler.handleMessage(message);
-    MessageHandler.setCaseSensitive(false);
-});
-MessageHandler.whenMessageStartsWith("{ban").then(message=>{
+    let channel = message.channel;
+
+if (message.content === prefix + 'Ban')
   message.reply('User banned succesfully!');
-});
-MessageHandler.whenMessageStartsWith(prefix+"MeaningOfLife").then(message=>{
-  message.reply(' **42!**');
-});
-MessageHandler.whenMessageStartsWith(prefix+"help").then(message=>{
-  message.reply('**Commands:**\n ===Global Commands===\n >Fail\n >Status\n >Abooses\n >Trig\n >MeaningOfLife\n >Embeds\n ===Sinbadx Knights===\n >Spreadsheet\n >Xena\n >Sinbadx'+
-  '\n >Umi\n >Willy\n >Dreams\n >Warm\n >Pixel\n >XenaCorrupt\n ===iXPLODE Commands===\n Coming Soon!');
-});
-MessageHandler.whenMessageStartsWith(prefix+"welcome").then(message=>{
+
+else if (message.content === prefix + 'XenaCorrupt')
+  message.channel.send('You may fall from the sky, you may fall from a tree. But the best way to fall, is in love with me. <3');
+
+else if (message.content === prefix + 'Sinbadx')
+  channel.send('The one, the only!');
+
+else if (message.content === prefix + 'MeaningOfLife')
+  message.reply('**42.**');
+
+else if (message.content === prefix + 'Xena')
+  message.channel.send('Do not touch my master!');
+
+else if (message.content === prefix + 'Pixel')
+  message.channel.send('Pixelate that. - Pixel, 2k17');
+
+else if (message.content === prefix + 'Trig')
+  message.channel.send('**TRIGGERED!**');
+
+else if (message.content === prefix + 'ArX')
+  message.channel.send('Run for your lives!! ArX will kill us all!');
+
+else if (message.content === prefix + 'Hi')
+  message.channel.send('Hoi!');
+
+else if (message.content === prefix + 'Dreams')
+  message.channel.send('Dreams will come true, just wait and see.');
+
+else if (message.content === prefix + 'Umi')
+  message.channel.send('Credits go to my teacher, Umi.');
+
+else if (message.content === prefix + 'Willy')
+  message.channel.send('Co-owner of Donuts. Special thanks.');
+
+else if (message.content === prefix + 'Embeds')
+  message.channel.send('If you want embed magic without selfbot Download the app here: https://gitlab.com/garantiertnicht/DiscordEmbed/tags/0.5.2-rc  Make sure you have Java, if you have not, download here: www.java.com  Insert your credentials (Username and Password). Do not put in your token, only username and password. Have fun with the embeds ;)');
+
+else if (message.content.startsWith(prefix + 'Warm'))
+  message.channel.send('Looks like someone is getting warmed again. -.- *Warms*');
+
+else if (message.content.startsWith(prefix + 'Abooses'))
+  message.channel.send('*Abooses*');
+
+else if (message.content.startsWith(prefix + 'welcome'))
  if(message.member.hasPermission("ADMINISTRATOR"))
   message.channel.send(`${message.guild.roles.get('305302877641900052')} Welcome to Sinbadx Knights! **If you would like to get verified and be able to speak in the other channels, please answer the following questions!**\n1. How did you hear about this server?\n2. Why did you join this server?\n3. Do you promise to read <#297263352252727296>?\n4. What is your favorite diep.io tank?\nMake sure you send your answers in this channel. (Do not message them)`);
   else message.reply('You do not have the permission: ADMINISTRATOR');
-});
-MessageHandler.whenMessageStartsWith(prefix+"Sinbadx").then(message=>{
-  message.channel.send('The one, the only! Sinbadx.');
-});
-MessageHandler.whenMessageStartsWith(prefix+"Xena").then(message=>{
-  message.channel.send('Do not touch my master! *Growls*');
-});
-MessageHandler.whenMessageStartsWith(prefix+"Spreadsheet").then(message=>{
-  message.channel.send('The spreadsheet can be found at this site: https://docs.google.com/spreadsheets/d/18HlGT-Ys2Z5mFTD18QZeFgnVQunf1LqT5VxnddDnbuw/edit?usp=sharing');
-});
-MessageHandler.whenMessageStartsWith(prefix+"Embeds").then(message=>{
-  message.channel.send('If you want embed magic without a selfbot required, download the app here: https://gitlab.com/garantiertnicht/DiscordEmbed/tags/0.5.2-rc  Make sure you have Java, if you have not, download here: www.java.com . Insert your credentials (Username and Password). Do not put in your token, only username and password. Have fun with the embeds!');
-});
-MessageHandler.whenMessageStartsWith(prefix+"XenaCorrupt").then(message=>{
-  message.channel.send('You may fall from the sky, you may fall from a tree. But the best way to fall, is in love with me. <3');
-});
-MessageHandler.whenMessageStartsWith(prefix+"Dreams").then(message=>{
-  message.channel.send('Dreams will come true, just wait and see.');
-});
-MessageHandler.whenMessageStartsWith(prefix+"Umi").then(message=>{
-  message.channel.send('Thanks to my teacher, Umi.');
-});
-MessageHandler.whenMessageStartsWith(prefix+'Warm').then(message=>{
-  message.channel.send('*Warms.*')
-});
-MessageHandler.whenMessageStartsWith(prefix+"Willy").then(message=>{
-  message.channel.send('Co-creator of Donuts. Special thanks.');
-});
-MessageHandler.whenMessageStartsWith(prefix+"Aboose").then(message=>{
-  message.channel.send('*Aboooooses. Aboose Police on their way. :3*');
-});
-MessageHandler.whenMessageStartsWith(prefix+"Trig").then(message=>{
-  message.channel.send('**TRIGGERED AF!!!**');
-});
-MessageHandler.whenMessageStartsWith(prefix+"invite").then(message=>{
-  message.channel.send('https://discordapp.com/oauth2/authorize?client_id=318603990273359874&scope=bot&permissions=0');
-});
-MessageHandler.whenMessageStartsWith(prefix+"Bam").then(message=>{
-  message.channel.send("*Bams "+message.mentions()+" with their bam hammer!*");
-});
-MessageHandler.whenMessageStartsWith(prefix+"Fail").then(message=>{
-  message.channel.send("*YOU Faaaiiiillledddd!*")
-});
-MessageHandler.whenMessageStartsWith(prefix+"HelpDM").then(message=>{
-  message.author.send('**Commands:**\n ===Global Commands===\n >Fail\n >Status\n >Abooses\n >Trig\n >MeaningOfLife\n >Embeds\n ===Sinbadx Knights===\n >Spreadsheet\n >Xena\n >Sinbadx'+
-  '\n >Umi\n >Willy\n >Dreams\n >Warm\n >Pixel\n >XenaCorrupt\n ===iXPLODE Commands===\n Coming Soon!')
-});
-MessageHandler.whenMessageStartsWith(prefix+'s').then(message=>{
-  if(message.author.id == JOSH || message.author.id == WILLY){
-      message.channel.send(message.content.split(' ').slice(1).join(' '));
-      message.delete();
-    }
-});
-MessageHandler.whenMessageStartsWith(prefix+'status').then(message=>{
+
+else if (message.content.startsWith(prefix + 'help'))
+  message.channel.send ('**Commands:**\n ===Global Commands===\n >Fail\n >Status\n >Abooses\n >Trig\n >MeaningOfLife\n >Embeds\n ===Sinbadx Knights===\n >Spreadsheet\n >Xena\n >Sinbadx'+
+  '\n >Umi\n >Willy\n >Dreams\n >Warm\n >Pixel\n >XenaCorrupt\n ===iXPLODE Commands===\n Coming Soon!');
+
+else if (message.content.startsWith(prefix + 'Spreadsheet'))
+  message.channel.send ('The spreadsheet can be found at this site: https://docs.google.com/spreadsheets/d/18HlGT-Ys2Z5mFTD18QZeFgnVQunf1LqT5VxnddDnbuw/edit?usp=sharing ');
+
+else if (message.content.startsWith(prefix +'status'))
   try{
     let bad = new Discord.RichEmbed();
     let myavatar = `https://images-ext-1.discordapp.net/.eJwFwW0OwiAMANC7cABavgZdYjxLLUyX6EYA92PGu--9n_q2t5rVa4zaZwDJm85rl71lrlXL_gE-eHDr4Eya0BGhjc4FStFDoMUbEhaPjyRIJTKXYHMwU0Qk0nV73vt6lptFn9T_AohLIRY.DAP1B8BhF5M5YeVpwoK2kW_ov0c`;
@@ -104,6 +91,15 @@ MessageHandler.whenMessageStartsWith(prefix+'status').then(message=>{
     return message.channel.send(' ',{embed: bad});
   }catch(err){
     console.error('[CMD][Status]: '+err);
+
+else if(message.content.startsWith(prefix + 's')){
+  if(message.author.id == JOSH || msg.author.id == WILLY){
+    channel.send(msg.content.split(' ').slice(1).join(' '));
+    message.delete();
   }
+}
+
 });
+}
+
 client.login(process.env.TOKEN);
