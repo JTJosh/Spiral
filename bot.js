@@ -96,10 +96,10 @@ else if(message.content.startsWith(prefix + 's')){
   if(message.author.id == JOSH || msg.author.id == WILLY){
     channel.send(msg.content.split(' ').slice(1).join(' '));
     message.delete();
+   }
   }
-}
+ }
 
 });
-}
 
 client.login(process.env.TOKEN);
