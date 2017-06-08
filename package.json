@@ -1,0 +1,37 @@
+{
+  "name": "donutbot",
+  "version": "0.2.0",
+  "description": "A Discord bot created by JTJosh",
+  "main": "bot.js",
+  "dependencies": {
+    "bufferutil": "^3.0.1",
+    "discord.js": "^11.1.0",
+    "erlpack": "github:hammerandchisel/erlpack",
+    "long": "^3.2.0",
+    "prism-media": "0.0.1",
+    "safe-buffer": "^5.1.0",
+    "snekfetch": "^3.1.8",
+    "tweetnacl": "^1.0.0",
+    "ultron": "^1.1.0",
+    "uws": "^0.14.5",
+    "ws": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wzhouwzhou/DonutBot.git"
+  },
+  "keywords": [
+    "Discord",
+    "Bot"
+  ],
+  "author": "JTJosh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wzhouwzhou/DonutBot/issues"
+  },
+  "homepage": "https://github.com/wzhouwzhou/DonutBot#readme"
+}
