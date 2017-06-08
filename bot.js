@@ -51,6 +51,9 @@ client.on('message', message => {
   else if (message.content === prefix + 'Willy')
     channel.send('Co-owner of Donuts. Special thanks.');
 
+  else if (message.content.startsWith(prefix + 'Fail'))
+    channel.send('*You Failed!*');
+
   else if (message.content === prefix + 'Embeds')
     channel.send('If you want embed magic without selfbot Download the app here: https://gitlab.com/garantiertnicht/DiscordEmbed/tags/0.5.2-rc  Make sure you have Java, if you have not, download here: www.java.com  Insert your credentials (Username and Password). Do not put in your token, only username and password. Have fun with the embeds ;)');
 
@@ -63,7 +66,7 @@ client.on('message', message => {
   else if (message.content.startsWith(prefix + 'welcome')){
     if(message.member.hasPermission("ADMINISTRATOR"))
       channel.send(`${message.guild.roles.get('305302877641900052')} Welcome to Sinbadx Knights! **If you would like to get verified and be able to speak in the other channels, please answer the following questions!**\n1. How did you hear about this server?\n2. Why did you join this server?\n3. Do you promise to read <#297263352252727296>?\n4. What is your favorite diep.io tank?\nMake sure you send your answers in this channel. (Do not message them)`);
-    else message.reply('You do not have the permission: ADMINISTRATOR');
+    else message.reply('You do not have the permission: ``ADMINISTRATOR``');
   }
 
   else if (message.content.startsWith(prefix + 'help'))
@@ -97,7 +100,7 @@ client.on('message', message => {
     if(message.author.id == Constants.users.JOSH || message.author.id == Constants.users.WILLY){
       channel.send(message.content.split(' ').slice(1).join(' '));
       message.delete();
-  }
+    }
   }
 });
 
