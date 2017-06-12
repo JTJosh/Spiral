@@ -57,38 +57,38 @@ client.on('message', message => {
   else if (message.content === prefix + 'Embeds')
     channel.send('If you want embed magic without selfbot Download the app here: https://gitlab.com/garantiertnicht/DiscordEmbed/tags/0.5.2-rc  Make sure you have Java, if you have not, download here: www.java.com  Insert your credentials (Username and Password). Do not put in your token, only username and password. Have fun with the embeds ;)');
 
-  else if (message.content.startsWith(prefix + 'Warm'))
-    channel.send('Looks like someone is getting warmed again. -.- *Warms*');
+  else if (message.content.startsWith(prefix + 'Warms'))
+    channel.send('*Boils to 1 million degrees, whoops.*');
 
   else if (message.content.startsWith(prefix + 'Abooses'))
     channel.send('*Abooses*');
 
-  else if (message.content.startsWith(prefix + 'welcome')){
-    if(message.member.hasPermission("ADMINISTRATOR"))
+  else if (message.content.startsWith(prefix + 'Welcome')){
+    if(message.member.hasPermission("MANAGE_MESSAGES"))
       channel.send(`${message.guild.roles.get('305302877641900052')} Welcome to Sinbadx Knights! **If you would like to get verified and be able to speak in the other channels, please answer the following questions!**\n1. How did you hear about this server?\n2. Why did you join this server?\n3. Do you promise to read <#297263352252727296>?\n4. What is your favorite diep.io tank?\nMake sure you send your answers in this channel. (Do not message them)`);
-    else message.reply('You do not have the permission: ``ADMINISTRATOR``');
+    else message.reply('You do not have the permission: ``MANAGE_MESSAGES``');
   }
 
-  else if (message.content.startsWith(prefix + 'help'))
+  else if (message.content.startsWith(prefix + 'Help'))
     channel.send ('**Commands:**\n ===Global Commands===\n >Fail\n >Status\n >Abooses\n >Trig\n >MeaningOfLife\n >Embeds\n ===Sinbadx Knights===\n >Spreadsheet\n >Xena\n >Sinbadx'+
     '\n >Umi\n >Willy\n >Dreams\n >Warm\n >Pixel\n >XenaCorrupt\n ===iXPLODE Commands===\n Coming Soon!');
 
   else if (message.content.startsWith(prefix + 'Spreadsheet'))
     channel.send ('The spreadsheet can be found at this site: https://docs.google.com/spreadsheets/d/18HlGT-Ys2Z5mFTD18QZeFgnVQunf1LqT5VxnddDnbuw/edit?usp=sharing ');
 
-  else if (message.content.startsWith(prefix +'status'))
+  else if (message.content.startsWith(prefix +'Status'))
     try{
       let bad = new Discord.RichEmbed();
-      let myavatar = client.displayAvatarURL.replace(/\.webp/,'.jpg');//`https://images-ext-1.discordapp.net/.eJwFwW0OwiAMANC7cABavgZdYjxLLUyX6EYA92PGu--9n_q2t5rVa4zaZwDJm85rl71lrlXL_gE-eHDr4Eya0BGhjc4FStFDoMUbEhaPjyRIJTKXYHMwU0Qk0nV73vt6lptFn9T_AohLIRY.DAP1B8BhF5M5YeVpwoK2kW_ov0c`;
+      let myavatar = client.user.displayAvatarURL.replace(/\.webp/,'.jpg');//`https://cdn.discordapp.com/attachments/257895860757725186/322638803426738176/9k.png`;
       bad.setColor(message.member&&message.member.displayColor?message.member.displayColor:1290103);
       bad.setAuthor(client.user.username, client.user.avatarURL);
       bad.setTitle('Bot Status').setDescription('Working');
       bad.addField('System Status: ','**__All systems functioning properly__**');
-      bad.addField('CPU Usage:', `${process.cpuUsage().user}`)
-         .addField('Packet Time: ',`\`${Date.now() - message.createdTimestamp} ms\``)
-         .addField('Uptime: ',`\`${process.uptime()} seconds\``)
-         .addField('Avatar URL: ',`[click](myavatar)`)
-         .addField('Timestamp: ',new Date().toUTCString());
+      bad.addField('Total Users: ',`\`${client.users.size}\``);
+      bad.addField('Uptime: ',`\`${process.uptime()} seconds\``)
+      bad.addField('Packet Time: ',`\`${Date.now() - message.createdTimestamp} ms\``)
+      bad.addField('Avatar URL: ',`[click](myavatar)`)
+      bad.addField('Timestamp: ',new Date().toUTCString());
       bad.setThumbnail(myavatar);
       bad.setFooter(`Bot status`, myavatar);
 
