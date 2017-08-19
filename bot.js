@@ -5,7 +5,7 @@ const client = new Discord.Client();
 const Constants = require('./lib/dependencies/Constants');
 client.on("debug", console.log);
 client.on("ready", () => {
-  client.user.setGame(">help");
+  client.user.setGame(`>help for help.`);
 });
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.username}!`);
@@ -15,68 +15,46 @@ client.on('message', message => {
   const prefix = Constants.prefix;
   const channel = message.channel;
 
-  if (message.content === prefix + 'Ban')
-    message.reply('User banned succesfully!');
+  if (message.content.startsWith(prefix + 'Help'))
+    channel.send ('```;Fun\n;Moderation(Coming Soon!)```');
 
-  else if (message.content === prefix + 'XenaCorrupt')
-    channel.send('You may fall from the sky, you may fall from a tree. But the best way to fall, is in love with me. <3');
-
-  else if (message.content === prefix + 'Sinbadx')
-    channel.send('The one, the only!');
-
-  else if (message.content === prefix + 'MeaningOfLife')
+  else if (message.content.startsWith(prefix + 'MeaningOfLife'))
     message.reply('**42.**');
 
-  else if (message.content === prefix + 'Xena')
-    channel.send('Do not touch my master!');
+  else if (message.content.startsWith(prefix + 'Fail'))
+    message.reply('*You have failed everything!*');
 
-  else if (message.content === prefix + 'Pixel')
-    channel.send('Pixelate that. - Pixel, 2k17');
+  else if (message.content.startsWith(prefix + 'Trig&BAN'))
+    channel.send('**TRIGGERED! BAN!!!** https://giphy.com/gifs/hammer-super-mario-8-bit-qPD4yGsrc0pdm');
 
-  else if (message.content === prefix + 'Trig')
-    channel.send('**TRIGGERED!**');
-
-  else if (message.content === prefix + 'ArX')
-    channel.send('Run for your lives!! ArX will kill us all!');
-
-  else if (message.content === prefix + 'Hi')
+  else if (message.content.startsWith(prefix + 'Hi'))
     channel.send('Hoi!');
 
-  else if (message.content === prefix + 'Dreams')
+  else if (message.content.startsWith(prefix + 'Dreams'))
     channel.send('Dreams will come true, just wait and see.');
 
-  else if (message.content === prefix + 'Umi')
-    channel.send('Credits go to my teacher, Umi.');
-
-  else if (message.content === prefix + 'Willy')
-    channel.send('Co-owner of Donuts. Special thanks.');
+  else if (message.content.startsWith(prefix + 'Willy'))
+    channel.send('Co-owner of Vanilla. Special thanks.');
 
   else if (message.content.startsWith(prefix + 'Fail'))
     channel.send('*You Failed!*');
 
-  else if (message.content === prefix + 'Embeds')
-    channel.send('If you want embed magic without selfbot Download the app here: https://gitlab.com/garantiertnicht/DiscordEmbed/tags/0.5.2-rc  Make sure you have Java, if you have not, download here: www.java.com  Insert your credentials (Username and Password). Do not put in your token, only username and password. Have fun with the embeds ;)');
-
-  else if (message.content.startsWith(prefix + 'Warms'))
-    channel.send('*Boils to 1 million degrees, whoops.*');
+  else if (message.content.startsWith(prefix + `Warms`))
+    channel.send(`*Boils to 1 million degrees, whoops.*`);
 
   else if (message.content.startsWith(prefix + 'Abooses'))
     channel.send('*Abooses*');
 
-  else if (message.content.startsWith(prefix + 'Welcome')){
-    if(message.member.hasPermission("MANAGE_MESSAGES"))
-      channel.send(`${message.guild.roles.get('305302877641900052')} Welcome to Sinbadx Knights! **If you would like to get verified and be able to speak in the other channels, please answer the following questions!**\n1. How did you hear about this server?\n2. Why did you join this server?\n3. Do you promise to read <#297263352252727296>?\n4. What is your favorite diep.io tank?\nMake sure you send your answers in this channel. (Do not message them)`);
-    else message.reply('You do not have the permission: ``MANAGE_MESSAGES``');
-  }
-
-  else if (message.content.startsWith(prefix + 'Help'))
-    channel.send ('**Commands:**\n ===Global Commands===\n >Fail\n >Status\n >Abooses\n >Trig\n >MeaningOfLife\n >Embeds\n ===Sinbadx Knights===\n >Spreadsheet\n >Xena\n >Sinbadx'+
-    '\n >Umi\n >Willy\n >Dreams\n >Warm\n >Pixel\n >XenaCorrupt\n ===iXPLODE Commands===\n Coming Soon!');
+  else if (message.content.startsWith(prefix + 'FakeBan'))
+    message.reply('*User banned successfully!*');
 
   else if (message.content.startsWith(prefix + 'Spreadsheet'))
     channel.send ('The spreadsheet can be found at this site: https://docs.google.com/spreadsheets/d/18HlGT-Ys2Z5mFTD18QZeFgnVQunf1LqT5VxnddDnbuw/edit?usp=sharing ');
 
-  else if (message.content.startsWith(prefix +'Status'))
+  else if (message.content.startsWith(prefix + 'Embeds'))
+    channel.send('If you want embed magic without selfbot Download the app here: https://gitlab.com/garantiertnicht/DiscordEmbed/tags/0.5.2-rc  Make sure you have Java, if you have not, download here: www.java.com  Insert your credentials (Username and Password). Do not put in your token, only username and password. Have fun with the embeds ;)');
+
+  else if (message.content.startsWith(prefix + 'Status'))
     try{
       let bad = new Discord.RichEmbed();
       let myavatar = client.user.displayAvatarURL.replace(/\.webp/,'.jpg');//`https://cdn.discordapp.com/attachments/257895860757725186/322638803426738176/9k.png`;
@@ -96,12 +74,61 @@ client.on('message', message => {
     }catch(err){
       console.error('[CMD][Status][Err]: '+err);
   }
+  else if (message.content.startsWith(prefix + 'Fun'))
+    try{
+      let bad = new Discord.RichEmbed();
+      let myavatar = client.user.displayAvatarURL.replace(/\.webp/,'.jpg');//`https://cdn.discordapp.com/attachments/257895860757725186/322638803426738176/9k.png`;
+      bad.setColor(message.member&&message.member.displayColor?message.member.displayColor:1290103);
+      bad.setAuthor(client.user.username, client.user.avatarURL);
+      bad.setTitle('Fun Commands').setDescription('Commands you can use on the go to have a laugh. :)');
+      bad.addField(';MeaningOfLife','Gives you the meaning of life.')
+      bad.addField(';Trig','TRIGGERED!')
+      bad.addField(';Hi','Hi!')
+      bad.addField(';Dreams','Follow your dreams!')
+      bad.addField(';Fail','Failure!')
+      bad.addField(';Warms','It is getting hot in here.')
+      bad.addField(';Abooses','Why abuse me?')
+      bad.addField(';Embeds','Without a selfbot!')
+      bad.addField(';FakeBan','Work In Progress.')
+      bad.setFooter(`Section: Fun`);
+
+      return channel.send(' ',{embed: bad});
+    }catch(err){
+      console.error('[CMD][Status][Err]: '+err);
+  }
+
   else if(message.content.startsWith(prefix + 's')){
     if(message.author.id == Constants.users.JOSH || message.author.id == Constants.users.WILLY){
       channel.send(message.content.split(' ').slice(1).join(' '));
       message.delete();
     }
   }
+  if (command === "Eval") {
+    if(message.author.id !== " ") return;
+    try {
+      var code = args.join(" ");
+      var evaled = eval(code);
+
+      if (typeof evaled !== "string")
+        evaled = require("util").inspect(evaled);
+
+      message.channel.sendCode("x1", clean(evaled));
+    } catch(err) {
+      message.channel.sendMessage(`\`ERROR\` \`\`\`x1\n${clean(err)}\n\`\`\``);
+    }
+  }
+
+}); // END MESSAGE HANDLER
+
+function clean(text) {
+  if (typeof(text) === "string")
+    return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+  else
+      return text;
+}
+client.on("guildMemberAdd", (member) => {
+  console.log(`New User "${member.user.username}" has joined "${member.guild.name}"` );
+  member.guild.defaultChannel.send(`"${member.user.username}" has joined this server`);
 });
 
 client.login(process.env.TOKEN);
