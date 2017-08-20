@@ -17,7 +17,7 @@ client.on('message', message => {
   const args = message.content.split(" ").slice(1);
 
   if (message.content.startsWith(prefix + 'Help'))
-    channel.send ('```;Fun\n;Moderation(Coming Soon!)```');
+    channel.send ('```Fun```\n```Moderation```');
 
   else if (message.content.startsWith(prefix + 'MeaningOfLife'))
     message.reply('**42.**');
@@ -46,14 +46,15 @@ client.on('message', message => {
   else if (message.content.startsWith(prefix + 'Abooses'))
     channel.send('*Abooses*');
 
-  else if (message.content.startsWith(prefix + 'FakeBan'))
-    message.reply('*User banned successfully!*');
-
   else if (message.content.startsWith(prefix + 'Spreadsheet'))
-    channel.send ('The spreadsheet can be found at this site: https://docs.google.com/spreadsheets/d/18HlGT-Ys2Z5mFTD18QZeFgnVQunf1LqT5VxnddDnbuw/edit?usp=sharing ');
+    channel.send('The spreadsheet can be found at this site: https://docs.google.com/spreadsheets/d/18HlGT-Ys2Z5mFTD18QZeFgnVQunf1LqT5VxnddDnbuw/edit?usp=sharing ');
 
   else if (message.content.startsWith(prefix + 'Embeds'))
     channel.send('If you want embed magic without selfbot Download the app here: https://gitlab.com/garantiertnicht/DiscordEmbed/tags/0.5.2-rc  Make sure you have Java, if you have not, download here: www.java.com  Insert your credentials (Username and Password). Do not put in your token, only username and password. Have fun with the embeds ;)');
+
+  else if (message.content.startsWith(prefix + `FakeBan  ${message.mentions.users}`))
+    channel.send(`${message.mentions.users} was banned successfully!`);
+
 
   else if (message.content.startsWith(prefix + 'Status'))
     try{
@@ -97,6 +98,22 @@ client.on('message', message => {
     }catch(err){
       console.error('[CMD][Status][Err]: '+err);
   }
+  else if (message.content.startsWith(prefix + 'Moderation'))
+    try{
+      let bad = new Discord.RichEmbed();
+      let myavatar = client.user.displayAvatarURL.replace(/\.webp/,'.jpg');//`https://cdn.discordapp.com/attachments/257895860757725186/322638803426738176/9k.png`;
+      bad.setColor(message.member&&message.member.displayColor?message.member.displayColor:1290103);
+      bad.setAuthor(client.user.username, client.user.avatarURL);
+      bad.setTitle('**Moderation Commands**').setDescription('You can use these to bring justice!');
+      bad.addField(';Ban','Bans a selected member.')
+      bad.addField(';Kick','Kicks a selected member.')
+      bad.setFooter(`Section: Moderation`);
+
+      return channel.send(' ',{embed: bad});
+    }catch(err){
+      console.error('[CMD][Status][Err]: '+err);
+  }
+
 
   else if(message.content.startsWith(prefix + 's')){
     if(message.author.id == Constants.users.JOSH || message.author.id == Constants.users.WILLY){
@@ -104,7 +121,7 @@ client.on('message', message => {
       message.delete();
     }
   }
-  if (message.content.startsWith(prefix + "kick")) {
+  if (message.content.startsWith(prefix + "Kick")) {
     let modRole = message.guild.roles.find("name", "Staff");
     if(!message.member.roles.has(modRole.id)) {
       return message.reply("You do not have the permission to perform this command!");
@@ -137,6 +154,24 @@ client.on('message', message => {
       message.channel.sendMessage(`\`ERROR\` \`\`\`x1\n${clean(err)}\n\`\`\``);
     }
   }
+if (message.content.startsWith(prefix + "Ban")) {
+  let modRole = message.guild.roles.find("name", "Staff");
+  if(!message.member.roles.has(modRole.id)) {
+    return message.reply("You do not have the permission to perform this command!");
+  }
+  if(message.mentions.users.size === 0) {
+    return message.reply("Please mention a user to ban!");
+  }
+  let banMember = message.guild.member(message.mentions.users.first());
+  if(!banMember) {
+    return message.reply("That user does not seem valid!");
+  }
+  if (!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) {
+    return message.reply("I dont have the permission: 'BAN_MEMBERS'!");
+  }
+  banMember.ban();
+  message.reply('User has been banned successfully!')
+}
 
 }); // END MESSAGE HANDLER
 
@@ -146,9 +181,5 @@ function clean(text) {
   else
       return text;
 }
-client.on("guildMemberAdd", (member) => {
-  console.log(`New User "${member.user.username}" has joined "${member.guild.name}"` );
-  member.guild.defaultChannel.send(`"${member.user.username}" has joined this server`);
-});
 
 client.login(process.env.TOKEN);
