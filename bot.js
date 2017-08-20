@@ -14,6 +14,7 @@ client.on('ready', () => {
 client.on('message', message => {
   const prefix = Constants.prefix;
   const channel = message.channel;
+  const args = message.content.split(" ").slice(1);
 
   if (message.content.startsWith(prefix + 'Help'))
     channel.send ('```;Fun\n;Moderation(Coming Soon!)```');
@@ -82,7 +83,7 @@ client.on('message', message => {
       bad.setAuthor(client.user.username, client.user.avatarURL);
       bad.setTitle('Fun Commands').setDescription('Commands you can use on the go to have a laugh. :)');
       bad.addField(';MeaningOfLife','Gives you the meaning of life.')
-      bad.addField(';Trig','TRIGGERED!')
+      bad.addField(';Trig&BAN','TRIGGERED!')
       bad.addField(';Hi','Hi!')
       bad.addField(';Dreams','Follow your dreams!')
       bad.addField(';Fail','Failure!')
@@ -103,7 +104,26 @@ client.on('message', message => {
       message.delete();
     }
   }
-  if (command === "Eval") {
+  if (message.content.startsWith(prefix + "kick")) {
+    let modRole = message.guild.roles.find("name", "Staff");
+    if(!message.member.roles.has(modRole.id)) {
+      return message.reply("You do not have the permission to perform this command!");
+    }
+    if(message.mentions.users.size === 0) {
+      return message.reply("Please mention a user to kick!");
+    }
+    let kickMember = message.guild.member(message.mentions.users.first());
+    if(!kickMember) {
+      return message.reply("That user does not seem valid!");
+    }
+    if (!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) {
+      return message.reply("I dont have the permission: 'KICK_MEMBERS'!");
+    }
+    kickMember.kick();
+    message.reply('User has been kicked successfully!')
+  }
+
+  if (message.content.startsWith(prefix + "Eval")) {
     if(message.author.id !== "292971521159200768") return;
     try {
       var code = args.join(" ");
