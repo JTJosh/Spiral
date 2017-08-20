@@ -104,7 +104,7 @@ client.on('message', message => {
     }
   }
   if (command === "Eval") {
-    if(message.author.id !== " ") return;
+    if(message.author.id !== "292971521159200768") return;
     try {
       var code = args.join(" ");
       var evaled = eval(code);
