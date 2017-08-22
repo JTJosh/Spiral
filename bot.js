@@ -10,7 +10,7 @@ chalk.enabled = true;
 console.log(chalk.green.bgBlue.underline.bold(`${'\n'.repeat(20)}\n${Constants.name} is booting up! Please wait.\n`));
 const msgStats = {
   count: 0,
-  maxR: 0.1,
+  maxIR: 0.1,
 };
 const GUI = new (require('./lib/struct/GUI').default)(Constants.name, process.env.TOKEN||Credentials.token, _, msgStats).build();
 
