@@ -12,7 +12,7 @@ const msgStats = {
   count: 0,
   maxR: 0.1,
 };
-const GUI = new (require('./lib/struct/GUI').default)(Constants.name, process.env.TOKEN||Credentials.TOKEN, _, msgStats).build();
+const GUI = new (require('./lib/struct/GUI').default)(Constants.name, process.env.TOKEN||Credentials.token, _, msgStats).build();
 
 const client = new (require('./lib/struct/BotClient').default(Discord, _, path))({
   'eventPath': './lib/events',
@@ -23,7 +23,7 @@ const client = new (require('./lib/struct/BotClient').default(Discord, _, path))
 
 client.GUI = GUI;
 
-client.build().login(process.env.TOKEN||Credentials.TOKEN);
+client.build().login(process.env.TOKEN||Credentials.token);
 
 /*
 
