@@ -1,53 +1,32 @@
 
 /* eslint linebreak-style: "off" */
+const _ = require('lodash');
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const path = require('path');
 const Constants = require('./lib/dependencies/Constants');
-client.on("debug", console.log);
-client.on("ready", () => {
-  client.user.setGame(`>help for help.`);
+const Credentials = require('./lib/dependencies/credentials.json');
+const chalk = require('chalk');
+chalk.enabled = true;
+console.log(chalk.green.bgBlue.underline.bold(`${'\n'.repeat(20)}\n${Constants.name} is booting up! Please wait.\n`));
+const msgStats = {
+  count: 0,
+  maxR: 0.1,
+};
+const GUI = new (require('./lib/struct/GUI').default)(Constants.name, process.env.TOKEN||Credentials.TOKEN, _, msgStats).build();
+
+const client = new (require('./lib/struct/BotClient').default(Discord, _, path))({
+  'eventPath': './lib/events',
+  'cmdPath': './lib/commands',
+  'prefix': Constants.PREFIX||'>',
+  msgStats,
 });
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.username}!`);
-});
 
-client.on('message', message => {
-  const prefix = Constants.prefix;
-  const channel = message.channel;
-  const args = message.content.split(" ").slice(1);
+client.GUI = GUI;
 
-  if (message.content.startsWith(prefix + 'Help'))
-    channel.send ('```Fun```\n```Moderation```');
+client.build().login(process.env.TOKEN||Credentials.TOKEN);
 
-  else if (message.content.startsWith(prefix + 'MeaningOfLife'))
-    message.reply('**42.**');
+/*
 
-  else if (message.content.startsWith(prefix + 'Fail'))
-    message.reply('*You have failed everything!*');
-
-  else if (message.content.startsWith(prefix + 'Trig&BAN'))
-    channel.send('**TRIGGERED! BAN!!!** https://giphy.com/gifs/hammer-super-mario-8-bit-qPD4yGsrc0pdm');
-
-  else if (message.content.startsWith(prefix + 'Hi'))
-    channel.send('Hoi!');
-
-  else if (message.content.startsWith(prefix + 'Dreams'))
-    channel.send('Dreams will come true, just wait and see.');
-
-  else if (message.content.startsWith(prefix + 'Willy'))
-    channel.send('Co-owner of Vanilla. Special thanks.');
-
-  else if (message.content.startsWith(prefix + 'Fail'))
-    channel.send('*You Failed!*');
-
-  else if (message.content.startsWith(prefix + `Warms`))
-    channel.send(`*Boils to 1 million degrees, whoops.*`);
-
-  else if (message.content.startsWith(prefix + 'Abooses'))
-    channel.send('*Abooses*');
-
-  else if (message.content.startsWith(prefix + 'Spreadsheet'))
-    channel.send('The spreadsheet can be found at this site: https://docs.google.com/spreadsheets/d/18HlGT-Ys2Z5mFTD18QZeFgnVQunf1LqT5VxnddDnbuw/edit?usp=sharing ');
 
   else if (message.content.startsWith(prefix + 'Embeds'))
     channel.send('If you want embed magic without selfbot Download the app here: https://gitlab.com/garantiertnicht/DiscordEmbed/tags/0.5.2-rc  Make sure you have Java, if you have not, download here: www.java.com  Insert your credentials (Username and Password). Do not put in your token, only username and password. Have fun with the embeds ;)');
@@ -56,26 +35,7 @@ client.on('message', message => {
     channel.send(`${message.mentions.users} was banned successfully!`);
 
 
-  else if (message.content.startsWith(prefix + 'Status'))
-    try{
-      let bad = new Discord.RichEmbed();
-      let myavatar = client.user.displayAvatarURL.replace(/\.webp/,'.jpg');//`https://cdn.discordapp.com/attachments/257895860757725186/322638803426738176/9k.png`;
-      bad.setColor(message.member&&message.member.displayColor?message.member.displayColor:1290103);
-      bad.setAuthor(client.user.username, client.user.avatarURL);
-      bad.setTitle('Bot Status').setDescription('Working');
-      bad.addField('System Status: ','**__All systems functioning properly__**');
-      bad.addField('Total Users: ',`\`${client.users.size}\``);
-      bad.addField('Uptime: ',`\`${process.uptime()} seconds\``)
-      bad.addField('Packet Time: ',`\`${Date.now() - message.createdTimestamp} ms\``)
-      bad.addField('Avatar URL: ',`[click](myavatar)`)
-      bad.addField('Timestamp: ',new Date().toUTCString());
-      bad.setThumbnail(myavatar);
-      bad.setFooter(`Bot status`, myavatar);
 
-      return channel.send(' ',{embed: bad});
-    }catch(err){
-      console.error('[CMD][Status][Err]: '+err);
-  }
   else if (message.content.startsWith(prefix + 'Fun'))
     try{
       let bad = new Discord.RichEmbed();
@@ -175,11 +135,4 @@ if (message.content.startsWith(prefix + "Ban")) {
 
 }); // END MESSAGE HANDLER
 
-function clean(text) {
-  if (typeof(text) === "string")
-    return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-  else
-      return text;
-}
-
-client.login(process.env.TOKEN);
+*/ //client.build().login(process.env.TOKEN);
