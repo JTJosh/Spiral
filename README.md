@@ -1,1 +1,1 @@
-# Phoenix, a bot created by JTJosh
+# Spiral, a bot created by JTJosh
