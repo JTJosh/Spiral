@@ -1,1 +1,1 @@
-# Spiral, a bot created by JTJosh
+# Sprinkles, a bot created by JTJosh
